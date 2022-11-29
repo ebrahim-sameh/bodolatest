@@ -1,6 +1,4 @@
-﻿Django~=3.0.5
-requests~=2.23.0
-psycopg2-binary==2.8.6
+
  asgiref==3.5.2
 certifi==2022.9.24
 cffi==1.15.1
