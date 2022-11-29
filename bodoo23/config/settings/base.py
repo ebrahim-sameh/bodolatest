@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CSRF_TRUSTED_ORIGINS = ['https://bodolatest-production.up.railway.app']
 
 ROOT_URLCONF = 'config.urls'
 print(os.path.join(SETTINGS_PATH, 'templates'))
