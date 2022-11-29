@@ -10,12 +10,12 @@ DEBUG = True
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "d409iecd7lbjd4",
-        "USER":  "ktksnydubidsvm",
-        "PASSWORD": "e0512543fc0a6209b84a9ff686f99042f2b2c14e0888fda6e56801439bae0bd4",
-        "HOST": "ec2-35-170-146-54.compute-1.amazonaws.com",
-        "PORT": 5432,
+    "ENGINE": "django.db.backends.postgresql",
+    'NAME': os.environ.get('QOVERY_POSTGRESQL_Z367580A2_DEFAULT_DATABASE_NAME', 'postgres'),
+    'USER': os.environ.get('QOVERY_POSTGRESQL_Z367580A2_LOGIN', 'qoveryadmin'),
+    'PASSWORD': os.environ.get('QOVERY_POSTGRESQL_Z367580A2_PASSWORD'),
+    'HOST': os.environ.get('QOVERY_POSTGRESQL_Z367580A2_HOST', 'z367580a2-postgresql.zeddf7074.criom.sh'),
+    'PORT': os.environ.get('QOVERY_POSTGRESQL_Z367580A2_PORT', 5432),
     },
 }
 django_heroku.settings(locals())
