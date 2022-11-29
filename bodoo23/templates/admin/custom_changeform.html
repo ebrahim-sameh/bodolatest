@@ -1,0 +1,10 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+	{% if original.is_superuser %}
+    <div class="submit-row">
+            <input type="submit" value="Add New Referral Token" name="_make-unique">
+    </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}
