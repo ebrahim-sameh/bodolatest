@@ -10,6 +10,7 @@ now = datetime.now()
 GenderChoice = (
     ("M", "Male"),
     ("F", "Female"),
+    ("NA", "not_to_mention"),
 )
 
 
@@ -75,6 +76,8 @@ class GlobalVar(models.Model):
     lane1percentage = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     lane2percentage = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     lane3percentage = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    invitemaxearning = models.IntegerField(default=0)
+    subscribemaxearning = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
