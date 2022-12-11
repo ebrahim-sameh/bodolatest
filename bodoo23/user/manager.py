@@ -19,7 +19,7 @@ class UserManager(BaseUserManager):
 
         # check code before using
         usages_token = ReferralRelationship.objects.filter(refer_token=ref_code[0])
-        if len(usages_token) < 5:
+        if len(usages_token) < 20:
             # create user
             user = self.model(
                 username=username, email=self.normalize_email(email), referral_token=referral_token, phone=phone
