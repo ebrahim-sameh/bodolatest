@@ -30,7 +30,7 @@ class LevelManagementAdmin(admin.ModelAdmin):
 
 class GlobalVarAdmin(admin.ModelAdmin):
     model = GlobalVar
-    list_display = ["timeoftrialperiod", "taskallowancetime",  "lane1percentage",  "lane2percentage",  "lane3percentage",  "created_at"]
+    list_display = ["timeoftrialperiod", "taskallowancetime",  "lane1percentage",  "lane2percentage",  "lane3percentage", "invitemaxearning", "subscribemaxearning", "created_at"]
 
 
 admin.site.register(Profile, ProfileAdmin)
