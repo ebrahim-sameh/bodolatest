@@ -11,6 +11,9 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from user import serializers
 from .models import User, Profile, GlobalVar
 from tasks.models import TaskUserRel, Task
+from rest_framework.generics import ListAPIView
+from referral_system.models import ReferralRelationship
+from .serializers import UserSerializer
 
 
 class ProfileView(APIView):
@@ -131,6 +134,21 @@ class GlobalVarView(APIView):
             "lane1percentage": qs.lane1percentage,
             "lane2percentage": qs.lane2percentage,
             "lane3percentage": qs.lane3percentage,
+            "invitemaxearning": qs.invitemaxearning,
+            "subscribemaxearning": qs.subscribemaxearning,
 
         }
         return Response(context)
+
+
+class SpecialUserView(ListAPIView):
+    def get(self, request):
+        username = request.GET.get('username')
+        # getting querry set with referral codes for user who make request
+        special_user_id = list(ReferralRelationship.objects.filter(employer__username=username, employee__user_profile__pro_status=True).values_list('employee', flat=True)[:5])
+        normal_user_id = list(ReferralRelationship.objects.filter(employer__username=username, employee__user_profile__pro_status=False).values_list('employee', flat=True)[:5])
+        normal_user_len = (len(normal_user_id) - len(special_user_id))
+
+        queryset = User.objects.filter(id__in=special_user_id + normal_user_id[:normal_user_len])
+        data = UserSerializer(queryset, many=True)
+        return Response(data.data, status=status.HTTP_200_OK)
